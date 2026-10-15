@@ -30,6 +30,7 @@ function Index() {
             <p className="mt-4 max-w-md text-lg opacity-90">Everything for cricket, football, badminton, the gym and beyond.</p>
             <div className="mt-6 flex gap-3">
               <Button asChild size="lg"><Link to="/shop">Shop now</Link></Button>
+              <Button asChild size="lg" variant="secondary"><Link to="/admin">Admin Panel</Link></Button>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">

@@ -28,10 +28,10 @@ function AdminProducts() {
   const save = async () => {
     if (!form) return;
     const price = Number(form.price), stock = parseInt(form.stock), thr = parseInt(form.low_stock_threshold);
-    if (!form.name.trim() || !(price >= 0) || !(stock >= 0) || !(thr >= 0)) return toast.error("Enter a name, valid price and stock");
+    if (!form.name.trim() || !(price >= 0) || !(stock >= 0) || !(thr >= 0)) { toast.error("Enter a name, valid price and stock"); return; }
     const row = { name: form.name.trim(), description: form.description, price, stock, low_stock_threshold: thr, category_id: form.category_id || null, image_url: form.image_url || null };
     const { error } = form.id ? await supabase.from("products").update(row).eq("id", form.id) : await supabase.from("products").insert(row);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Product saved");
     setForm(null);
     refresh();
@@ -40,14 +40,14 @@ function AdminProducts() {
   const remove = async (p: Product) => {
     if (!confirm(`Delete ${p.name}?`)) return;
     const { error } = await supabase.from("products").delete().eq("id", p.id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     refresh();
   };
 
   const quickStock = async (p: Product, stock: number) => {
     if (stock < 0) return;
     const { error } = await supabase.from("products").update({ stock }).eq("id", p.id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     refresh();
   };
 

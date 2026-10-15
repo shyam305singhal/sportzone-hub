@@ -20,19 +20,19 @@ function AdminCategories() {
     e.preventDefault();
     if (!name.trim()) return;
     const { error } = await supabase.from("categories").insert({ name: name.trim() });
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     setName(""); refresh();
   };
   const rename = async () => {
     if (!editing?.name.trim()) return;
     const { error } = await supabase.from("categories").update({ name: editing.name.trim() }).eq("id", editing.id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     setEditing(null); refresh();
   };
   const remove = async (id: string) => {
     if (!confirm("Delete category? Products keep existing without a category.")) return;
     const { error } = await supabase.from("categories").delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     refresh();
   };
 

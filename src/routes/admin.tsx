@@ -1,11 +1,7 @@
-import { createFileRoute, Link, Outlet, redirect } from "@tanstack/react-router";
-import { supabase } from "@/integrations/supabase/client";
+import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/_authenticated/admin")({
-  beforeLoad: async ({ context }) => {
-    const { data } = await supabase.rpc("has_role", { _user_id: context.user.id, _role: "admin" });
-    if (!data) throw redirect({ to: "/" });
-  },
+export const Route = createFileRoute("/admin")({
+  ssr: false,
   head: () => ({ meta: [{ title: "Admin — SportZone" }, { name: "robots", content: "noindex" }] }),
   component: AdminLayout,
 });

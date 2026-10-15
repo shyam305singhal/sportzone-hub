@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { productsQuery } from "@/lib/queries";
 import { formatPrice, isLowStock } from "@/lib/shop";
 
-export const Route = createFileRoute("/_authenticated/admin/")({ component: Dashboard });
+export const Route = createFileRoute("/admin/")({ component: Dashboard });
 
 function Dashboard() {
   const { data: products = [] } = useQuery(productsQuery);

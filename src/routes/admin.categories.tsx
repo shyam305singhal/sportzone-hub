@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { categoriesQuery } from "@/lib/queries";
 
-export const Route = createFileRoute("/_authenticated/admin/categories")({ component: AdminCategories });
+export const Route = createFileRoute("/admin/categories")({ component: AdminCategories });
 
 function AdminCategories() {
   const qc = useQueryClient();

@@ -23,7 +23,7 @@ export function SiteHeader() {
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <Link to="/shop" className="text-sm font-medium sm:hidden">Shop</Link>
-          {(isAdmin || !user) && (
+          {true && (
             <Button asChild variant="ghost" size="sm">
               <Link to="/admin"><LayoutDashboard className="size-4" /><span className="hidden sm:inline">Admin Panel</span></Link>
             </Button>

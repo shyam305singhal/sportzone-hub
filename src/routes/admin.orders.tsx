@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { ORDER_STATUSES, formatPrice } from "@/lib/shop";
 
-export const Route = createFileRoute("/_authenticated/admin/orders")({ component: AdminOrders });
+export const Route = createFileRoute("/admin/orders")({ component: AdminOrders });
 
 function AdminOrders() {
   const qc = useQueryClient();

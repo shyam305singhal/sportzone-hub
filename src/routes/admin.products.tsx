@@ -11,7 +11,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { categoriesQuery, productsQuery, type Product } from "@/lib/queries";
 import { formatPrice, isLowStock } from "@/lib/shop";
 
-export const Route = createFileRoute("/_authenticated/admin/products")({ component: AdminProducts });
+export const Route = createFileRoute("/admin/products")({ component: AdminProducts });
 
 type Form = { id?: string; name: string; description: string; price: string; stock: string; low_stock_threshold: string; category_id: string; image_url: string };
 const empty: Form = { name: "", description: "", price: "", stock: "0", low_stock_threshold: "5", category_id: "", image_url: "" };

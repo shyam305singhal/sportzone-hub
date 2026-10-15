@@ -1,3 +1,4 @@
+import type { Tables } from "@/integrations/supabase/types";
 import { queryOptions } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -22,4 +23,4 @@ export const productsQuery = queryOptions({
   },
 });
 
-export type Product = Awaited<ReturnType<NonNullable<typeof productsQuery.queryFn>>>[number];
+export type Product = Tables<"products"> & { categories: { name: string } | null };
